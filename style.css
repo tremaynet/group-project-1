@@ -6,3 +6,11 @@
     border-style: dashed;
     border-width: 1px;
 }
+
+.navbar-dropdown {
+    text-align: center;
+}
+
+.navbar-info {
+    text-align: center;
+}
