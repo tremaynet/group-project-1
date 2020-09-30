@@ -4,54 +4,73 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>PX</title>
+
+<!-- Link to all stylesheets -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+
+<!-- Nav Bar w/ Checkboxes and Search Bar -->
+  <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <a class="navbar-item" href="https://bulma.io">
             <img src="assets/glasses.jpg" width="112" height="28">
             <h3>PX</h3>
           </a>
-      
+<!-- Nav Bar Burger -->
           <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
           </a>
         </div>
-      
+<!-- End of top portion of nav bar -->
         <div id="navbarBasicExample" class="navbar-menu is-active">
           <div class="navbar-start">
             <p class="navbar-info">
-              Please select which social media platforms you would like to pull in.
+              Please search a topic and select which social media platforms you would like to pull in.
             </p>
-      
-              <div class="navbar-dropdown">
-                  <label class="checkbox">
-                    <input type="checkbox" id="facebookCheck">
-                    <img src="assets/fblogo.png" width="20" height="20"> Facebook
-                  </label>
+<!-- These are the items that should come out of the dropdown burger -->
+<!-- Nav Bar checkboxes -->
+            <div class="navbar-dropdown">
+              <label class="checkbox">
+                <input type="checkbox" id="facebookCheck">
+                <img src="assets/fblogo.png" width="20" height="20"> Facebook
+              </label>
                 
-                  <label class="checkbox">
-                    <input type="checkbox" id="twitterCheck">
-                    <img src="assets/twitterlogo.png" width="20" height="20"> Twitter
-                  </label>
+              <label class="checkbox">
+                <input type="checkbox" id="twitterCheck">
+                <img src="assets/twitterlogo.png" width="20" height="20"> Twitter
+              </label>
 
-                  <label class="checkbox">
-                    <input type="checkbox" id="redditCheck">
-                    <img src="assets/redditlogo.png" width="20" height="20"> Reddit
-                  </label>
-
+              <label class="checkbox">
+                <input type="checkbox" id="redditCheck">
+                <img src="assets/redditlogo.png" width="20" height="20"> Reddit
+              </label>
+            </div>
+<!-- Search Bar Input -->
+            <div class="columns">
+              <div class="column"></div>
+              <div class="field has-addons column">
+                <div class="control">
+                  <input class="input" type="text" placeholder="Search Topic">
+                </div>
+                <div class="control">
+                  <a class="button is-info">
+                    Search
+                  </a>
+                </div>
               </div>
+              <div class="column"></div>
             </div>
           </div>
-      
-          </div>
         </div>
-      </nav>
+      </div>
+    </div>
+  </nav>
+<!-- End of Nav Bar section -->
     <section class="hero is-full-height">
       <div class="container">
         <button class="button is-link" id="generateFeedBtn">
