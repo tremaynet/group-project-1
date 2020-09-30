@@ -39,3 +39,7 @@ body{
 .card {
     margin: 15px;
 }
+h3 {
+    font-family: 'Bungee Shade', cursive; 
+    font-size: 30px;
+}
