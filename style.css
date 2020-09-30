@@ -35,8 +35,19 @@ body{
     color: white;
     font-size: 22px;
 }
+<<<<<<< HEAD
 /* .field {
     display: block;
     margin: 0 auto;
     width: 500px;
 } */
+=======
+
+.card {
+    margin: 15px;
+}
+h3 {
+    font-family: 'Bungee Shade', cursive; 
+    font-size: 30px;
+}
+>>>>>>> 81c507bbfd742fddf4a2003626632b03ab3ecc55
