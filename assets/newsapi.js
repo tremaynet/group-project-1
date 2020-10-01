@@ -1,127 +1,50 @@
-/**
- * pulls information from the form and build the query URL
- * @returns {string} URL for NYT API based on form inputs
- */
-function buildQueryURL() {
-  // queryURL is the url we'll use to query the API
-  var queryURL = "http://newsapi.org/v2/everything?q=Apple&from=2020-09-29&sortBy=popularity&";
 
-  // Begin building an object to contain our API call's query parameters
-  // Set the API key
-  var queryParams = { "api-key": "68f203c395244c8aa5c1e594586b7b89" };
 
-  // Grab text the user typed into the search input, add to the queryParams object
-  queryParams.q = $("#search-term")
-    .val()
-    .trim();
 
-  }
+ // bind button click to action
+ $('#searchButton').on('click', function () {
+  getNewsResults();
   
-
-
-/**
- * takes API data (JSON/object) and turns it into elements on the page
- * @param {object} NYTData - object containing NYT API data
- */
-function updatePage(NYTData) {
-  // Get from the form the number of results to display
-  // API doesn't have a "limit" parameter, so we have to do this ourselves
-  var numArticles = $("#article-count").val();
-
-  // Log the NYTData to console, where it will show up as an object
-  console.log(NYTData);
-  console.log("------------------------------------");
-
-  // Loop through and build elements for the defined number of articles
-  for (var i = 0; i < numArticles; i++) {
-    // Get specific article info for current index
-    var article = NYTData.response.docs[i];
-
-    // Increase the articleCount (track article # - starting at 1)
-    var articleCount = i + 1;
-
-    // Create the  list group to contain the articles and add the article content for each
-    var $articleList = $("<ul>");
-    $articleList.addClass("list-group");
-
-    // Add the newly created element to the DOM
-    $("#article-section").append($articleList);
-
-    // If the article has a headline, log and append to $articleList
-    var headline = article.headline;
-    var $articleListItem = $("<li class='list-group-item articleHeadline'>");
-
-    if (headline && headline.main) {
-      //console.log(headline.main);
-      //$articleListItem.append(
-        "<span class='label label-primary'>" +
-          articleCount +
-          "</span>" +
-          "<strong> " +
-          headline.main +
-          "</strong>"
-      );
-    }
-
-    // If the article has a byline, log and append to $articleList
-    var byline = article.byline;
-
-    //if (byline && byline.original) {
-      console.log(byline.original);
-      $articleListItem.append("<h5>" + byline.original + "</h5>");
-    }
-
-    // Log section, and append to document if exists
-    var section = article.section_name;
-    console.log(article.section_name);
-    if (section) {
-      $articleListItem.append("<h5>Section: " + section + "</h5>");
-    }
-
-    // Log published date, and append to document if exists
-    var pubDate = article.pub_date;
-    console.log(article.pub_date);
-    if (pubDate) {
-      $articleListItem.append("<h5>" + article.pub_date + "</h5>");
-    }
-
-    // Append and log url
-    $articleListItem.append("<a href='" + article.web_url + "'>" + article.web_url + "</a>");
-    console.log(article.web_url);
-
-    // Append the article
-    $articleList.append($articleListItem);
-  }
-}
-
-// Function to empty out the articles
-function clear() {
-  $("#article-section").empty();
-}
-
-// CLICK HANDLERS
-// ==========================================================
-
-// .on("click") function associated with the Search Button
-$("#run-search").on("click", function(event) {
-  // This line allows us to take advantage of the HTML "submit" property
-  // This way we can hit enter on the keyboard and it registers the search
-  // (in addition to clicks). Prevents the page from reloading on form submit.
-  event.preventDefault();
-
-  // Empty the region associated with the articles
-  clear();
-
-  // Build the query URL for the ajax request to the NYT API
-  var queryURL = buildQueryURL();
-
-  // Make the AJAX request to the API - GETs the JSON data at the queryURL.
-  // The data then gets passed as an argument to the updatePage function
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  }).then(updatePage);
 });
+console.log(getNewsResults)
 
-//  .on("click") function associated with the clear button
-$("#clear-all").on("click", clear);
+// query news api for search data
+function getNewsResults() {
+  // grab search term from UI
+  var searchTerm = $('#searchTerm').val();
+  // personal newsapi key
+  var apiKey = '9d1ab7009abccc42a353b3e5fb27c0eb';
+  // base api url
+  var baseUrl = 'https://gnews.io/api/v4/';
+  // compile full request
+  var requestUrl = `${baseUrl}search?q=${searchTerm}&lang=en&token=${apiKey}`;
+  console.log(`requestUrl -> ${requestUrl}`);
+  // make a request for the data at the 
+
+  fetch(requestUrl)
+      .then(response => response.json())
+      .then(data => processResults(data));
+}
+
+// 
+function processResults(json) {
+  // clear the current results
+  $('#searchResults').html('');
+  // add the current searches number of articles
+  $('#searchResults').append(`TOTAL ARTICLES FOUND: ${json.totalArticles}`);
+
+  // get all articles models
+  var articles = [...json.articles];
+  console.log(articles.length)
+
+  // create ordered list
+  const $ul = $('<ul>').append(
+      // populate ordered list with article results
+      articles.map(article => 
+          $("<li>").append($(`<a href="${article.url}">`).text(article.title))
+      )
+  );
+
+  // append the list to search results container
+  $('#searchResults').append($ul);
+}
