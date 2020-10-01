@@ -1,27 +1,12 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-</head>
-
-<body>
-    <label for="searchTerm">Search for:</label>
-    <input id="searchTerm" />
-    <input id="searchButton" type="button" value="Search News" />
-
-    <div id="searchResults"></div>
-</body>
-
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript">
-
-    // bind button click to action
+// bind button click to action when doc is available
+$(document).ready(function () {
     $('#searchButton').on('click', function () {
         getNewsResults();
     });
+});
 
-    // query news api for search data
-    function getNewsResults() {
+// query news api for search data
+function getNewsResults() {
         // grab search term from UI
         var searchTerm = $('#searchTerm').val();
         // personal newsapi key
@@ -38,8 +23,8 @@
             .then(data => processResults(data));
     }
 
-    // 
-    function processResults(json) {
+// process json data into html
+function processResults(json) {
         // clear the current results
         $('#searchResults').html('');
         // add the current searches number of articles
@@ -52,7 +37,7 @@
         // create ordered list
         const $ul = $('<ul>').append(
             // populate ordered list with article results
-            articles.map(article => 
+            articles.map(article =>
                 $("<li>").append($(`<a href="${article.url}">`).text(article.title))
             )
         );
@@ -60,5 +45,3 @@
         // append the list to search results container
         $('#searchResults').append($ul);
     }
-</script>
-</html>
