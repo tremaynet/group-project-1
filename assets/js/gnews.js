@@ -6,6 +6,9 @@ $(document).ready(function () {
     $('#burger').on('click', function () {
         burgerOpen();
     });
+    $('#generateFeedBtn').on('click', function () {
+        getNewsResults();
+    });
 });
 
 // query news api for search data
