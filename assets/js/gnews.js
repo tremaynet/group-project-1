@@ -3,6 +3,9 @@ $(document).ready(function () {
     $('#searchButton').on('click', function () {
         getNewsResults();
     });
+    $('#burger').on('click', function () {
+        burgerOpen();
+    });
 });
 
 // query news api for search data
@@ -45,3 +48,14 @@ function processResults(json) {
         // append the list to search results container
         $('#searchResults').append($ul);
     }
+
+// Hamburger Menu Hidden when first arriving to page and opening on click.
+function burgerOpen() {
+        var navbarBurger = $('#navbarBasic');
+        if ((navbarBurger).hasClass('is-active')) {
+            navbarBurger.removeClass('is-active')
+        } else {
+            ((navbarBurger).addClass('is-active'))
+        }
+        
+}
