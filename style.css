@@ -18,7 +18,12 @@ html{
 body{
     margin-left: 75px;
     margin-right: 75px;
-    padding: 0;
+    padding: 20px;
+    background-color: black;
+}
+
+html {
+    background-color: aqua;
 }
 
 nav {
