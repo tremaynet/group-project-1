@@ -16,6 +16,12 @@ $(document).ready(function () {
         //getNewsResults();
         getRedditResults();
     });
+    $('#burger').on('click', function () {
+        burgerOpen();
+    });
+    $('#generateFeedBtn').on('click', function () {
+        getNewsResults();
+    });
 });
 
 // query news api for search data
@@ -117,10 +123,20 @@ function processResults(json) {
 
         // append the list to search results container
         $('#searchResults').append($ul);
-
     }
 
-    function init() {
-
-    }
-    
+// Hamburger Menu Hidden when first arriving to page and opening on click.
+function burgerOpen() {
+        var navbarBurger = $('#navbarBasic');
+        if ((navbarBurger).hasClass('is-active')) {
+            navbarBurger.removeClass('is-active')
+        } else {
+            ((navbarBurger).addClass('is-active'))
+        }
+        
+}
+// Closes the modal 
+$(".modal-close").click(function() {
+    $("html").removeClass("is-clipped");
+    $(this).parent().removeClass("is-active");
+ });
