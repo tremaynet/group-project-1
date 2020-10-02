@@ -6,6 +6,9 @@ $(document).ready(function () {
     $('#burger').on('click', function () {
         burgerOpen();
     });
+    $('#generateFeedBtn').on('click', function () {
+        getNewsResults();
+    });
 });
 
 // query news api for search data
@@ -59,7 +62,7 @@ function burgerOpen() {
         }
         
 }
-
+// Closes the modal 
 $(".modal-close").click(function() {
     $("html").removeClass("is-clipped");
     $(this).parent().removeClass("is-active");
