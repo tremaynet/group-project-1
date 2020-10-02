@@ -1,7 +1,20 @@
+var newsArray = [];
+var redditArray = [];
+var mergedArray = [];
+
+
 // bind button click to action when doc is available
 $(document).ready(function () {
+    getRedditResults();
     $('#searchButton').on('click', function () {
-        getNewsResults();
+        //clear arrays
+        newsArray = [];
+        redditArray = [];
+        mergedArray = [];
+
+
+        //getNewsResults();
+        getRedditResults();
     });
 });
 
@@ -31,17 +44,83 @@ function processResults(json) {
         $('#searchResults').append(`TOTAL ARTICLES FOUND: ${json.totalArticles}`);
 
         // get all articles models
-        var articles = [...json.articles];
-        console.log(articles.length)
+        newsArray = [...json.articles];
+        console.log(newsArray.length)
 
+        getRedditResults();
+    }
+
+//get reddit data
+    function getRedditResults() {
+        url = "https://www.reddit.com/search.json";
+
+        searchTerm = $("#searchTerm").val();
+        //reddit ajax call
+        $.ajax(
+            url,
+            {
+                data: { q: searchTerm },
+                success: function(response) {
+                    if (response.data.children.length > 0) {
+
+                        console.log(response.data.children);
+                        for(var i = 0; i < response.data.children.length; i++) {
+                            //create object for storing arrays
+                            var listObject = {
+                                title: "",
+                                url: ""
+                            }
+                            
+                            //load data into object
+                            listObject.title = "Reddit: " + response.data.children[i].data.title;
+                            listObject.url = "http://reddit.com/" + response.data.children[i].data.permalink;
+
+                            //push object into arry
+                            redditArray.push(listObject);
+                        }
+                        //merge arrays
+                        mergeArrays();
+                    } else {
+                        console.log("No subreddits match the search query!");
+                    }
+                },
+                error: function() {
+                    alert("Something didn't work!");
+                }
+            }
+        );        
+    }
+
+//merge the arrays
+    function mergeArrays() {
+        for(var i = 0; i < 10; i++) {
+            //mergedArray.push(newsArray[i]);
+            mergedArray.push(redditArray[i]);
+        }
+        createList();
+    }
+
+    //create the lists on the page
+    function createList() {
+        $('#searchResults').html('');
+
+        console.log(mergedArray);
         // create ordered list
         const $ul = $('<ul>').append(
             // populate ordered list with article results
-            articles.map(article =>
-                $("<li>").append($(`<a href="${article.url}">`).text(article.title))
+            mergedArray.map(mergedArray =>
+                $("<li>").append($(`<a href="${mergedArray.url}">`).text(mergedArray.title))
             )
         );
 
+        $ul.attr("id", "dataList");
+
         // append the list to search results container
         $('#searchResults').append($ul);
+
     }
+
+    function init() {
+
+    }
+    
