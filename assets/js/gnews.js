@@ -13,8 +13,8 @@ $(document).ready(function () {
         mergedArray = [];
 
 
-        //getNewsResults();
-        getRedditResults();
+        getNewsResults();
+        //getRedditResults();
     });
     $('#burger').on('click', function () {
         burgerOpen();
@@ -100,7 +100,7 @@ function processResults(json) {
 //merge the arrays
     function mergeArrays() {
         for(var i = 0; i < 10; i++) {
-            //mergedArray.push(newsArray[i]);
+            mergedArray.push(newsArray[i]);
             mergedArray.push(redditArray[i]);
         }
         createList();
