@@ -15,6 +15,7 @@ $(document).ready(function () {
 
         getNewsResults();
         //getRedditResults();
+        $(".card").removeClass("is-hidden")
     });
     $('#burger').on('click', function () {
         burgerOpen();
