@@ -164,9 +164,8 @@ function createList() {
     $('#searchResults').html('');
 
     console.log(mergedArray);
-    // create ordered list
-    //const $ul = $('<ul>').append(
-    // populate ordered list with article results
+
+    //iterate through array to dynamically create content cards
     for (var i = 0; i < mergedArray.length; i++) {
         var card = $("<div>");
         var cardContent = $("<div>");
@@ -206,18 +205,8 @@ function createList() {
         card.append(cardContent);
         card.appendTo(".contentList");
 
-        //                $("<li>").append($(`<a href="${mergedArray.url}">`).text(mergedArray.title))
 
     }
-    /*mergedArray.map(mergedArray =>
-        $("<li>").append($(`<a href="${mergedArray.url}">`).text(mergedArray.title))
-    )
-);*/
-
-    //$ul.attr("id", "dataList");
-
-    // append the list to search results container
-    //$('#searchResults').append($ul);
 
     isRefreshing = false;
 }
