@@ -144,7 +144,7 @@ function processResults(json) {
                 cardHeader.addClass("card-header");
                 cardContent.addClass("card-content");
                 cardHeaderText.addClass("card-header-title");
-                cardHeaderText.text(mergedArray[i].title);
+                cardContent.text(mergedArray[i].title);
 
 
                 cardHeader.append(cardHeaderText);
