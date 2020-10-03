@@ -52,6 +52,7 @@ function processResults(json) {
         // get all articles models
         newsArray = [...json.articles];
         console.log(newsArray.length)
+        
 
         getRedditResults();
     }
