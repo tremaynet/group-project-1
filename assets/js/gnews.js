@@ -124,7 +124,9 @@ function processResults(json) {
 
         // append the list to search results container
         $('#searchResults').append($ul);
+
     }
+
 
 // Hamburger Menu Hidden when first arriving to page and opening on click.
 function burgerOpen() {
@@ -141,3 +143,5 @@ $(".modal-close").click(function() {
     $("html").removeClass("is-clipped");
     $(this).parent().removeClass("is-active");
  });
+
+
