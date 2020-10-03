@@ -165,6 +165,7 @@ function processResults(json) {
         //$('#searchResults').append($ul);
     }
 
+
 // Hamburger Menu Hidden when first arriving to page and opening on click.
 function burgerOpen() {
         var navbarBurger = $('#navbarBasic');
@@ -180,3 +181,5 @@ $(".modal-close").click(function() {
     $("html").removeClass("is-clipped");
     $(this).parent().removeClass("is-active");
  });
+
+
