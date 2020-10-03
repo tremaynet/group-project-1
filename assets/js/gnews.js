@@ -29,7 +29,7 @@ function getNewsResults() {
         // grab search term from UI
         var searchTerm = $('#searchTerm').val();
         // personal newsapi key
-        var apiKey = '9d1ab7009abccc42a353b3e5fb27c0eb';
+        var apiKey = '3e0475262ee86dccb511aba269c7eb71';
         // base api url
         var baseUrl = 'https://gnews.io/api/v4/';
         // compile full request
