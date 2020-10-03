@@ -45,9 +45,28 @@ function getNewsResults() {
 // process json data into html
 function processResults(json) {
         // clear the current results
-        $('#searchResults').html('');
+        
+        $(".contentList").empty();
+        var card = $("<div>");
+        var card = $("<div>");
+        var cardContent = $("<div>");
+        var cardHeader = $("<div>");
+        var cardHeaderText = $("<p>");
+
+        card.addClass("card");
+        cardHeader.addClass("card-header");
+        cardContent.addClass("card-content");
+        cardHeaderText.addClass("card-header-title");
+        cardHeaderText.text("Social Media")
+
+
+        cardHeader.append(cardHeaderText);
+        card.append(cardHeader);
+        card.append(cardContent);
+        card.appendTo(".contentList");
+
         // add the current searches number of articles
-        $('#searchResults').append(`TOTAL ARTICLES FOUND: ${json.totalArticles}`);
+        $('.card-content').append(`TOTAL ARTICLES FOUND: ${json.totalArticles}`);
 
         // get all articles models
         newsArray = [...json.articles];
@@ -113,18 +132,38 @@ function processResults(json) {
 
         console.log(mergedArray);
         // create ordered list
-        const $ul = $('<ul>').append(
+        //const $ul = $('<ul>').append(
             // populate ordered list with article results
-            mergedArray.map(mergedArray =>
+            for(var i = 0; i < mergedArray.length; i++) {
+                var card = $("<div>");
+                var cardContent = $("<div>");
+                var cardHeader = $("<div>");
+                var cardHeaderText = $("<p>");
+
+                card.addClass("card");
+                cardHeader.addClass("card-header");
+                cardContent.addClass("card-content");
+                cardHeaderText.addClass("card-header-title");
+                cardHeaderText.text(mergedArray[i].title);
+
+
+                cardHeader.append(cardHeaderText);
+                card.append(cardHeader);
+                card.append(cardContent);
+                card.appendTo(".contentList");
+
+//                $("<li>").append($(`<a href="${mergedArray.url}">`).text(mergedArray.title))
+
+            }
+            /*mergedArray.map(mergedArray =>
                 $("<li>").append($(`<a href="${mergedArray.url}">`).text(mergedArray.title))
             )
-        );
+        );*/
 
-        $ul.attr("id", "dataList");
+        //$ul.attr("id", "dataList");
 
         // append the list to search results container
-        $('#searchResults').append($ul);
-
+        //$('#searchResults').append($ul);
     }
 
 
