@@ -7,6 +7,14 @@
     font-size: 20px;
 }
 
+.navbar {
+    background-color: #fbeec1;
+}
+
+#navbarBasic {
+    background-color: #fbeec1;
+}
+
 .navbar-info {
     text-align: center;
 }
@@ -19,11 +27,11 @@ body{
     margin-left: 75px;
     margin-right: 75px;
     padding: 20px;
-    background-color: #E27D60;
+    background-color: #659dbd;
 }
 
 html {
-    background-color: #41B3A3;
+    background-color: #bc986a;
 }
 
 nav {
@@ -35,7 +43,7 @@ nav {
     position: fixed;
     width: 50px;
     height: 50px;
-    background: #85dcb8;
+    background: #8d8741;
     bottom: 40px;
     right: 50px;
     text-decoration: none;
@@ -47,11 +55,12 @@ nav {
 
 .card {
     margin: 15px;
+    background-color: #fbeec1;
 }
 
 #header {
     font-family: 'Bungee Shade', cursive; 
-    font-size: 65px;
+    font-size: 40px;
     text-align: center;
     color: black;
 }
@@ -64,7 +73,7 @@ h3 {
 
 #happy {
     font-family: 'Bungee Shade', cursive; 
-    font-size: 30px;
+    font-size: 25px;
     text-align: center;
     color: black;
 }
@@ -80,4 +89,8 @@ h2 {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     color: black;
+}
+
+.footer {
+    background-color: #fbeec1;
 }
