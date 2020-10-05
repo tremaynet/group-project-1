@@ -46,7 +46,7 @@ function getNewsResults() {
     else {
         searchTerm = $("#searchTerm").val();
     }        // personal newsapi key
-    var apiKey = '63079afcc3b1e6e8c73a040f81e0a0de';
+    var apiKey = '1ddf65c5aff07d10b675cf492f4f0b15';
     // base api url
     var baseUrl = 'https://gnews.io/api/v4/';
     // compile full request
