@@ -47,6 +47,7 @@ function getNewsResults() {
         searchTerm = $("#searchTerm").val();
     }        // personal newsapi key
     var apiKey = '9dd7602e5a99dcd0eacce85dbe256de8';
+    
     // base api url
     var baseUrl = 'https://gnews.io/api/v4/';
     // compile full request
@@ -109,7 +110,7 @@ function getRedditResults() {
         url,
         {
             data: { q: searchTerm },
-            success: function (response) {
+            success: async function (response) {
                 if (response.data.children.length > 0) {
 
                     console.log(response.data.children);
@@ -119,7 +120,8 @@ function getRedditResults() {
                             title: "",
                             url: "",
                             description: "",
-                            image: ""
+                            image: "",
+                            content: ""
                         }
 
                         //load data into object
@@ -171,7 +173,8 @@ function createList() {
         var cardContent = $("<div>");
         var cardHeader = $("<div>");
         var cardHeaderText = $("<p>");
-        var description = $("<p>");
+        // var description = $("<p>");
+        var content = $("<p>");
         var urlContainer = $("<p>");
         var urlContent = $("<a>");
         var image = $("<img>");
@@ -181,7 +184,8 @@ function createList() {
         cardContent.addClass("card-content");
         cardHeaderText.addClass("card-header-title");
         cardHeaderText.text(mergedArray[i].title);
-        description.text(mergedArray[i].description);
+        // description.text(mergedArray[i].description);
+        content.text(mergedArray[i].content);
 
         image.attr("src", mergedArray[i].image);
 
@@ -199,7 +203,8 @@ function createList() {
         }
 
         urlContainer.append(urlContent);
-        cardContent.append(description);
+        // cardContent.append(description);
+        cardContent.append(content);
         cardContent.append(urlContainer);
         card.append(cardHeader);
         card.append(cardContent);
