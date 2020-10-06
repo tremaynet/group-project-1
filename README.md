@@ -31,5 +31,5 @@ The average person spends over 2 hours a day scrolling through applications on t
 [Meaghan Neylon]("https://github.com/neylonmc")
 [Tremayne Terry]("https://github.com/tremaynet")
 
-Project Link: Display Here
+Project Link: https://github.com/tremaynet/group-project-1.git
 
